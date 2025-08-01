@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Do You Love Me?</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    /* Fullscreen Background GIF */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://media1.tenor.com/m/RIBWPuMVcj0AAAAd/kesho-pixelkesho.gif') no-repeat center center/cover;
+      z-index: -2;
+    }
+
+    /* Dark overlay for readability */
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 30px;
+      padding: 50px 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      max-width: 650px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .media {
+      width: 250px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 48px;
+      margin: 30px 0 20px;
+      color: #ffffff;
+    }
+
+    .buttons {
+      position: relative;
+      height: 150px;
+      margin-top: 30px;
+    }
+
+    .buttons button {
+      padding: 12px 30px;
+      font-size: 16px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      position: absolute;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .yes-btn {
+      background-color: #ff9bd6;
+      color: #1b1b45;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 10px;
+    }
+
+    .yes-btn.besar {
+      transform: translateX(-50%) scale(1.3);
+      background-color: #ff6ec7;
+    }
+
+    .no-btn {
+      background-color: #eee;
+      color: #333;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 80px;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .media {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Ganti src dengan path gambar atau video yang kamu ingin tampilkan -->
+    <img src="c:\Users\Administrator\Pictures\Screenshots\Cuplikan layar 2025-08-01 202609.png" alt="Kimi no Nawa Moment" class="media">
+    <!-- Atau jika ingin pakai video, ganti dengan ini:
+    <video class="media" autoplay muted loop>
+      <source src="your-video.mp4" type="video/mp4">
+    </video>
+    -->
+    <h1>before we continue. do you love me? 😼</h1>
+    <div class="buttons">
+      <button class="yes-btn" onclick="iyaKlik()">Yes ❤️</button>
+      <button class="no-btn" id="noBtn" onclick="tidakKlik()">No ☝🏻️</button>
+    </div>
+  </div>
+
+<script>
+  let scale = 1; // variabel untuk menyimpan skala saat ini
+
+  function iyaKlik() {
+    window.location.href = 'last.html';
+  }
+
+  function tidakKlik() {
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.querySelector('.yes-btn');
+
+    // Tingkatkan skala
+    scale += 0.1;
+    yesBtn.style.transform = `translateX(-50%) scale(${scale})`;
+
+    // Acak posisi tombol "No"
+    const container = document.querySelector('.buttons');
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = containerWidth - btnWidth;
+    const maxY = containerHeight - btnHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noBtn.style.left = `${randomX}px`;
+    noBtn.style.top = `${randomY}px`;
+  }
+</script>
+
+</body>
+</html>
